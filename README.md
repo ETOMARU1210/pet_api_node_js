@@ -9,8 +9,7 @@
 - POST /pet/{petId}
 - DELETE /pet/{petId}
 
-:::note alert
-なお、PUT /petにおいてはPOST /petのcreateメソッドのdetaプロパティに書くものと似ているため、今回は省略
+**なお、PUT /petにおいてはPOST /petのcreateメソッドのdetaプロパティに書くものと似ているため、今回は省略**
 
 # 参考URL
 [Swaggerhub](https://app.swaggerhub.com/apis-docs/SUPPORT_41/PET-STORE-API/1.1.0#/pet/updatePet)
