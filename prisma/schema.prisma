@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Pet {
+  id         Int        @id @default(autoincrement())
+  category   Category?  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId Int?
+  name       String
+  photoUrls  PhotoUrl[]
+  tags       Tag[]
+  status     String
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  pets Pet[]
+  name String
+}
+
+model PhotoUrl {
+  id       Int    @id @default(autoincrement())
+  pet      Pet    @relation(fields: [petId], references: [id], onDelete: Cascade)
+  petId    Int
+  photoUrl String
+}
+
+model Tag {
+  id    Int    @id @default(autoincrement())
+  pet   Pet    @relation(fields: [petId], references: [id], onDelete: Cascade)
+  petId Int
+  name  String
+}
